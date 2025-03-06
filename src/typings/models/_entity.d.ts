@@ -1,0 +1,4 @@
+type Entity = {
+    id: string;
+  };
+  
