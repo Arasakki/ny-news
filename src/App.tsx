@@ -1,12 +1,20 @@
-// import useLocale from "./hooks/useLocale";
+import Footer from "./components/layouts/Footer";
+import ThemeProvider from "./theme";
+import Header from "./components/layouts/Header";
+import { lazy, Suspense } from "react";
+import Loader from "./components/loader";
+
+const Besider = lazy(() => import("./pages/Besider/Besider"));
 
 function App() {
-  // const t = useLocale();
-
   return (
-    <>
-      <h1>fadfg</h1>
-    </>
+    <ThemeProvider>
+      <Header />
+      <Suspense fallback={<Loader />}>
+        <Besider />
+      </Suspense>
+      <Footer sx={{ position: "fixed", bottom: 0, background: "#FFF" }} />
+    </ThemeProvider>
   );
 }
 

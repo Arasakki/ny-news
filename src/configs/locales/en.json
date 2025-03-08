@@ -1,5 +1,26 @@
 {
+  "menu": {
+    "science": "SCIENCE",
+    "general": "GENERAL",
+    "entertainment": "ENTERTAINMENT",
+    "technology": "TECHNOLOGY",
+    "business": "BUSINESS",
+    "health": "HEALTH",
+    "sports": "SPORTS"
+  },
   "pages": {
-    "title": "Page"
+    "title": "BESIDER",
+    "news": {
+      "title": "News for ",
+      "cnn": "CNN"
+    },
+    "footer": {
+      "login": "Log in",
+      "about": "About Us",
+      "publishers": "Publishers",
+      "sitemap": "SiteMap",
+      "powered": "Powered by ",
+      "copyright": "© 2023 Besider. Inspired by Insider"
+    }
   }
 }

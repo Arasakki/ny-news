@@ -14,6 +14,7 @@ export default class ModelApiService implements IModelApiService {
 
   public get = <T>(url: string, options?: RequestInit): Promise<T> => {
     console.debug("[Fetch]: GET", url);
+
     return this.httpService
       .fetch(url, options)
       .then(this.parseResponse)
@@ -27,14 +28,13 @@ export default class ModelApiService implements IModelApiService {
     let details;
     try {
       const contentType = res.headers.get("Content-Type");
-      // application/json не используетсяйййййййййй, т.к. есть кастомные типы, см getListWithIdAndNamesOnly
       if (contentType?.includes("json")) {
         const jsonResponse = await res.json();
         if (res.ok) return jsonResponse;
         else {
           details = jsonResponse.error.details;
           throw new Error(jsonResponse.error?.message || jsonResponse.message);
-        } // jsonResponse.error это поле, в котором бэкенд отдаёт ошибки
+        }
       } else if (!res.ok) {
         throw new Error();
       }
@@ -44,7 +44,9 @@ export default class ModelApiService implements IModelApiService {
     }
   };
 
-  private parseResponsePayload = ({ data }: ResponseContainerDTO) => data;
+  private parseResponsePayload = (response: any) => {
+    return response.response;
+  };
 
   private getError = (
     code: number,
