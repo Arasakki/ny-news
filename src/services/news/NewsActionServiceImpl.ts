@@ -9,7 +9,7 @@ export default class NewsActionServiceImpl
   implements INewsActionService
 {
   public async getNews(month: number, year: number): Promise<News.Base> {
-    const proxyUrl = "https://corsproxy.io/?url=";
+    const proxyUrl = "https://cors-anywhere.herokuapp.com/";
     const apiUrl = `https://api.nytimes.com/svc/archive/v1/${year}/${month}.json?api-key=${NYTIMES_API}`;
     const dto: NewsResponseDTO = await this.get<NewsResponseDTO>(
       `${proxyUrl}${apiUrl}`
